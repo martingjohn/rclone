@@ -19,8 +19,5 @@ RUN curl -O https://downloads.rclone.org/rclone-${RCLONE_VERSION}-linux-${PLATFO
     && cp rclone /usr/bin/ \
     && chown root:root /usr/bin/rclone \
     && chmod 755 /usr/bin/rclone \
-    && mkdir -p /usr/local/share/man/man1 \
-    && cp rclone.1 /usr/local/share/man/man1/ \
-    && mandb \
     && rm -rf /tmp/rclone
 ENTRYPOINT ["rclone"]
