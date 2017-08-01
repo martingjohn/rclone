@@ -1,14 +1,21 @@
 FROM alpine:latest
-# Install dependancies and remove cache
+
+# global environment settings
+ENV RCLONE_VERSION="current"
+ENV PLATFORM_ARCH="amd64"
+
+# Install dependancies and remove cache (fuse for mount - will that work?)
 RUN apk update && apk add \
         curl \
+        fuse \
         unzip \
      && rm -rf /var/cache/apk/*
-WORKDIR /tmp/rclone
+
 # Get latest release of rclone, unpack, and install
-RUN curl -O https://downloads.rclone.org/rclone-current-linux-amd64.zip \
-    && unzip rclone-current-linux-amd64.zip \
-    && cd rclone-*-linux-amd64 \
+WORKDIR /tmp/rclone
+RUN curl -O https://downloads.rclone.org/rclone-${RCLONE_VERSION}-linux-${PLATFORM_ARCH}.zip \
+    && unzip rclone-${RCLONE_VERSION}-linux-${PLATFORM_ARCH}.zip \
+    && cd rclone-*-linux-${PLATFORM_ARCH} \
     && cp rclone /usr/bin/ \
     && chown root:root /usr/bin/rclone \
     && chmod 755 /usr/bin/rclone \
