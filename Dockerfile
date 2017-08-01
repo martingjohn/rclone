@@ -14,7 +14,7 @@ RUN apk update && apk add \
 # Get latest release of rclone, unpack, and install
 WORKDIR /tmp/rclone
 RUN curl -O https://beta.rclone.org/rclone-beta-${RCLONE_VERSION}-linux-${PLATFORM_ARCH}.zip \
-    && unzip rclone-${RCLONE_VERSION}-linux-${PLATFORM_ARCH}.zip \
+    && unzip rclone-beta-${RCLONE_VERSION}-linux-${PLATFORM_ARCH}.zip \
     && cd rclone-*-linux-${PLATFORM_ARCH} \
     && cp rclone /usr/bin/ \
     && chown root:root /usr/bin/rclone \
