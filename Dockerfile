@@ -1,7 +1,7 @@
 FROM alpine:latest
 
 # global environment settings
-ENV RCLONE_VERSION="current"
+ENV RCLONE_VERSION="beta"
 ENV PLATFORM_ARCH="amd64"
 
 # Install dependancies and remove cache (fuse for mount - will that work?)
