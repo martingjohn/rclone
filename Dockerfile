@@ -20,4 +20,6 @@ RUN curl -O https://beta.rclone.org/rclone-beta-${RCLONE_VERSION}-linux-${PLATFO
     && chown root:root /usr/bin/rclone \
     && chmod 755 /usr/bin/rclone \
     && rm -rf /tmp/rclone
-ENTRYPOINT ["rclone"]
+
+VOLUME /data
+ENTRYPOINT ["rclone","--config","/data/rclone.conf"]
