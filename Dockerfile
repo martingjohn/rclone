@@ -7,7 +7,6 @@ ENV PLATFORM_ARCH="amd64"
 # Install dependancies and remove cache (fuse for mount - will that work?)
 RUN apk update && apk add \
         curl \
-        fuse \
         unzip \
      && rm -rf /var/cache/apk/*
 
